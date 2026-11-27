@@ -1,4 +1,4 @@
-# CollabDocs
+# Ajaia_project
 
 A small full-stack document editor: rich-text editing, file import, and owner → user sharing, persisted in SQLite.
 
@@ -19,13 +19,13 @@ A small full-stack document editor: rich-text editing, file import, and owner �
 
 There are no passwords. Pick a seeded account on the sign-in screen:
 
-- `alice@example.com`: Alice Owner
-- `bob@example.com`: Bob Collaborator
-- `carol@example.com`: Carol Reviewer
+- `krishna@example.com`: Krishna
+- `charitha@example.com`: Charitha
+- `kritha@example.com`: Kritha
 
-A fresh database also contains **"Welcome — start here"**, owned by Alice and shared with Bob (edit) and Carol (view), so sharing can be reviewed immediately.
+A fresh database also contains **"Welcome — start here"**, owned by Krishna and shared with Charitha (edit) and Kritha (view), so sharing can be reviewed immediately.
 
-**To try sharing:** sign in as Alice in one browser and Bob in a private window (or a different browser), then share Alice's doc with Bob.
+**To try sharing:** sign in as Krishna in one browser and Charitha in a private window (or a different browser), then share Krishna's doc with Charitha.
 
 ## Running locally
 
@@ -58,7 +58,7 @@ Data is stored in `data/app.db`. Delete that file to reset.
 npm test
 ```
 
-There are 12 API integration tests in [test/api.test.js](test/api.test.js). They run against an in-memory database and cover:
+There are 13 API integration tests in [test/api.test.js](test/api.test.js). They run against an in-memory database and cover:
 
 - create / rename / edit / reopen with formatting preserved
 - input validation and malformed JSON
@@ -67,7 +67,7 @@ There are 12 API integration tests in [test/api.test.js](test/api.test.js). They
 - the full owner / editor / viewer / no-access permission matrix, including revoking access
 - share validation
 - `.md` / `.txt` import, plus rejection of unsupported, broken and missing files
-- the one-time demo seed
+- the one-time demo seed, and in-place migration of the old demo accounts
 
 > **Windows note:** if Vitest reports *"failed to find the runner"*, your shell's working directory has a lowercase drive letter (`c:\…`). VS Code terminals sometimes open that way. Run `cd C:\path\to\collab-docs` with an uppercase `C:` and retry. This is a known Vitest/Windows path-casing issue, not a problem with the app.
 
@@ -82,8 +82,8 @@ Free-tier caveats: the instance sleeps after ~15 min idle, so the first request 
 **Any Docker host** (Fly.io, Railway, a VM):
 
 ```bash
-docker build -t collab-docs .
-docker run -p 3001:3001 -v collab-data:/data -e SESSION_SECRET=change-me collab-docs
+docker build -t ajaia-project .
+docker run -p 3001:3001 -v ajaia-data:/data -e SESSION_SECRET=change-me ajaia-project
 ```
 
 Deployed URL: _add after deploying_

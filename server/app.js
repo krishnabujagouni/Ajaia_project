@@ -43,7 +43,7 @@ export function createApp(db, { sessionSecret = 'dev-secret', clientDir } = {}) 
   const q = {
     userById: db.prepare('SELECT id, email, name FROM users WHERE id = ?'),
     userByEmail: db.prepare('SELECT id, email, name FROM users WHERE email = ?'),
-    allUsers: db.prepare('SELECT id, email, name FROM users ORDER BY name'),
+    allUsers: db.prepare('SELECT id, email, name FROM users ORDER BY id'),
     docById: db.prepare('SELECT * FROM documents WHERE id = ?'),
     shareFor: db.prepare('SELECT role FROM shares WHERE document_id = ? AND user_id = ?'),
     owned: db.prepare(`

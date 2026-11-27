@@ -57,7 +57,7 @@ export default function ShareDialog({ doc, onChange, onClose }) {
           <input
             list="share-users"
             type="email"
-            placeholder="Email, e.g. bob@example.com"
+            placeholder="Email, e.g. charitha@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             autoFocus

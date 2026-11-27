@@ -25,7 +25,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <Link to="/" className="brand">📝 CollabDocs</Link>
+        <Link to="/" className="brand">📝 Ajaia_project</Link>
         <div className="topbar-right">
           <span className="muted">Signed in as <strong>{user.name}</strong> ({user.email})</span>
           <button className="btn ghost" onClick={logout}>Switch user</button>

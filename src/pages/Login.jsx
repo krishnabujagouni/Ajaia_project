@@ -22,7 +22,7 @@ export default function Login({ onLogin }) {
   return (
     <div className="center">
       <div className="card login">
-        <h1>📝 CollabDocs</h1>
+        <h1>📝 Ajaia_project</h1>
         <p className="muted">
           Demo sign-in: choose an account. Open a second browser (or a private window) as a
           different user to try sharing.
