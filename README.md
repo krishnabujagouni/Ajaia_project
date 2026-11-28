@@ -75,18 +75,23 @@ There are 13 API integration tests in [test/api.test.js](test/api.test.js). They
 
 The app is one Docker container with SQLite on a mounted volume ([Dockerfile](Dockerfile)).
 
-**Render (free, recommended):** push this repo to GitHub, then in Render choose **New → Blueprint** and select the repo. [render.yaml](render.yaml) creates a free web service and generates `SESSION_SECRET`. Health check: `/api/health`.
+**Railway (used for the live deployment):** create a project from the GitHub repo. [railway.json](railway.json) builds the Dockerfile and health-checks `/api/health`. Then:
+1. Add a variable `SESSION_SECRET` (any long random string).
+2. Attach a volume mounted at `/data`, so the SQLite database survives redeploys.
+3. Generate a public domain under **Settings → Networking**.
 
-Free-tier caveats: the instance sleeps after ~15 min idle, so the first request takes ~30–60 s. The disk is ephemeral: data persists across refreshes and while the instance is up, but resets on restart or redeploy. The demo users and the shared Welcome document are re-seeded on every fresh start. For durable storage, set `plan: starter` and uncomment the `disk` block (~$7/mo, paid by the deployer, never by reviewers).
+Railway provides `PORT` automatically. The demo users and the shared Welcome document are seeded on first start.
 
-**Any Docker host** (Fly.io, Railway, a VM):
+*Alternative:* [render.yaml](render.yaml) is a ready-made Render Blueprint (free plan, no persistent disk).
+
+**Any other Docker host** (Fly.io, a VM):
 
 ```bash
 docker build -t ajaia-project .
 docker run -p 3001:3001 -v ajaia-data:/data -e SESSION_SECRET=change-me ajaia-project
 ```
 
-Deployed URL: _add after deploying_
+**Live app:** https://ajaiaproject-production.up.railway.app
 
 ## Project layout
 
